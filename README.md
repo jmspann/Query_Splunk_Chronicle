@@ -5,7 +5,7 @@ In this lab, we will perform a basic query in both Splunk and Chronicle. The pur
 <br />
 In Splunk, our task is to explore any failed SSH logins for the root account on the mail server, which could alert of suspicious activity. <br/>
 <br />
-In Chronicle,
+In Chronicle, we will investigate a suspicious domain that was found in a phishing email to determine if it is malicious or not.
 
 
 <h2>Languages and Utilities Used</h2>
@@ -40,28 +40,28 @@ We will narrow the search further to locate any failed SSH logins for the root a
 <h3>Perform a Query in Chronicle</h3>
 
 <p align="center">
-:  <br/>
-<img src="" height="100%" width="100%" alt="Chronicle Query"/>
+We first start by typing the domain in question, "signin.office365x24.com" in the search bar:  <br/>
+<img src="https://i.imgur.com/LT8bVSV.png" height="100%" width="100%" alt="Chronicle Query"/>
 <br />
 <br />
-:  <br/>
-<img src="" height="100%" width="100%" alt="Chronicle Query"/>
+Here we can see what the overview page of the domain looks like, which includes information like the VirusTotal context, WHOIS, and sibling domains:  <br/>
+<img src="https://i.imgur.com/o9RZMx6.png" height="100%" width="100%" alt="Chronicle Query"/>
 <br />
 <br />
-:  <br/>
-<img src="" height="100%" width="100%" alt="Chronicle Query"/>
+By clicking on "Resolved IPs" we can see what IP address the domain maps to, which is "40.100.174.34:  <br/>
+<img src="https://i.imgur.com/bdy2QTs.png" height="100%" width="100%" alt="Chronicle Query"/>
 <br />
 <br />
-:  <br/>
-<img src="" height="100%" width="100%" alt="Chronicle Query"/>
+If we click on "VT Context", we can see that 11/94 security vendors flagged this domain as malicious:  <br/>
+<img src="https://i.imgur.com/q3eAh5R.png" height="100%" width="100%" alt="Chronicle Query"/>
 <br />
 <br />
-:  <br/>
-<img src="" height="100%" width="100%" alt="Chronicle Query"/>
+Now if we click on "Timeline" we can see details about the HTTP requests that were made to the domain, including "GET" and "POST" which requests and sends information to the domain. We can see that several assests sent both GET and POST requests:  <br/>
+<img src="https://i.imgur.com/KQShbft.png" height="100%" width="100%" alt="Chronicle Query"/>
 <br />
 <br />
-:  <br/>
-<img src="" height="100%" width="100%" alt="Chronicle Query"/>
+After collecting this information on the domain, we can conclude that it is suspicious and most likely malicious. Before ending the investigation, we also want to look at the IP address found under "Resolved IPs" to see if the "signin.office.365x24.com" domain uses another domain:  <br/>
+<img src="https://i.imgur.com/0O0GhYg.png" height="100%" width="100%" alt="Chronicle Query"/>
 </p>
 <br />
 <br />
